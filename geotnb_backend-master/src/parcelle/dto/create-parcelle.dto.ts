@@ -1,5 +1,4 @@
-// src/parcelle/dto/create-parcelle.dto.ts
-import { IsString, IsNumber, IsOptional, IsDate, IsBoolean } from 'class-validator';
+import { IsString, IsNumber, IsBoolean, IsOptional } from 'class-validator';
 
 export class CreateParcelleDto {
   @IsString()
@@ -30,17 +29,23 @@ export class CreateParcelleDto {
   montantTotalTNB: number;
 
   @IsBoolean()
-  exonereTNB: boolean;
+  @IsOptional()
+  exonereTNB?: boolean;
 
-  @IsDate()
   @IsOptional()
   datePermis?: Date;
 
-  @IsNumber()
   @IsOptional()
   dureeExoneration?: number;
 
-  @IsString()
+  geometry: object;
+
+  @IsOptional()
+  dateCreation?: Date;
+
+  @IsOptional()
+  dateModification?: Date;
+
   @IsOptional()
   etatValidation?: string;
 }
